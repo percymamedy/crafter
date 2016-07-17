@@ -1,2 +1,3 @@
-# crafter
-All in one PHP framework installer.
+# Crafter 
+
+An all in one PHP framework installer.

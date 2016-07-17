@@ -1,0 +1,8 @@
+list:
+ - laravel
+ - symfony
+ - zend
+repos:
+    laravel: \Crafter\Installer\Repositories\LaravelRepository
+    symfony: \Crafter\Installer\Repositories\SymfonyRepository
+    zend: \Crafter\Installer\Repositories\ZendRepository
