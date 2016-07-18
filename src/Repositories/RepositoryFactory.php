@@ -31,6 +31,13 @@ abstract class RepositoryFactory
     protected $projectName;
 
     /**
+     * Installation start message.
+     *
+     * @var string
+     */
+    protected $startMessage = 'Crafting your application...';
+
+    /**
      * The version of the framework to install.
      *
      * @var string
@@ -64,11 +71,21 @@ abstract class RepositoryFactory
      */
     public function findComposer()
     {
-        if (file_exists(getcwd() . '/composer.phar')) {
+        if (file_exists($this->getCurrentWorkingDirectory() . '/composer.phar')) {
             return '"' . PHP_BINARY . '" composer.phar';
         }
 
         return 'composer';
+    }
+
+    /**
+     * Get the current working directory path.
+     *
+     * @return string
+     */
+    public function getCurrentWorkingDirectory()
+    {
+        return getcwd();
     }
 
     /**
@@ -108,7 +125,7 @@ abstract class RepositoryFactory
      */
     public function getProjectPath()
     {
-        return getcwd() . DIRECTORY_SEPARATOR . $this->getProjectName();
+        return $this->getCurrentWorkingDirectory() . DIRECTORY_SEPARATOR . $this->getProjectName();
     }
 
     /**
@@ -137,8 +154,21 @@ abstract class RepositoryFactory
         // Get all commands that we should run
         $commands = $this->getCommandsToRun();
 
+        // Actually runs the commands
+        $this->runCommands($commands);
+    }
+
+    /**
+     * Run download ans install commands.
+     *
+     * @param string $commands
+     *
+     * @return void
+     */
+    public function runCommands($commands)
+    {
         // Create process
-        $process = new Process($commands, getcwd(), null, null, null);
+        $process = new Process($commands, $this->getCurrentWorkingDirectory(), null, null, null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
             $process->setTty(true);
@@ -151,6 +181,16 @@ abstract class RepositoryFactory
     }
 
     /**
+     * Will show a message notify start of the process.
+     *
+     * @return void
+     */
+    public function showStartMessage()
+    {
+        $this->getOutput()->writeln('<info>' . $this->startMessage . '</info>');
+    }
+
+    /**
      * Verify that the application does not already exist.
      *
      * @return void
@@ -159,7 +199,7 @@ abstract class RepositoryFactory
      */
     public function verifyApplicationDoesntExist()
     {
-        if ((is_dir($this->getProjectPath()) || is_file($this->getProjectPath())) && $this->getProjectPath() != getcwd()) {
+        if ((is_dir($this->getProjectPath()) || is_file($this->getProjectPath())) && $this->getProjectPath() != $this->getCurrentWorkingDirectory()) {
             throw new RuntimeException('Application already exists!');
         }
     }

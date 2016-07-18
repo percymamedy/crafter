@@ -5,6 +5,13 @@ namespace Crafter\Installer\Repositories;
 class LaravelRepository extends RepositoryFactory
 {
     /**
+     * Installation start message.
+     *
+     * @var string
+     */
+    protected $startMessage = 'Crafting your Laravel application...';
+
+    /**
      * Commands that must be run to install Laravel.
      *
      * @return string
@@ -20,15 +27,5 @@ class LaravelRepository extends RepositoryFactory
         ];
 
         return implode(' && ', $commands);
-    }
-
-    /**
-     * Will show a message notify start of the process.
-     *
-     * @return void
-     */
-    public function showStartMessage()
-    {
-        $this->getOutput()->writeln('<info>Crafting your Laravel application...</info>');
     }
 }

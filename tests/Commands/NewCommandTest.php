@@ -27,8 +27,6 @@ class NewCommandTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        parent::setUp();
-
         $this->app = new Application;
         $this->command = new NewCommand;
 
@@ -42,7 +40,6 @@ class NewCommandTest extends PHPUnit_Framework_TestCase
      */
     protected function tearDown()
     {
-        parent::tearDown();
         unset($this->app);
         unset($this->command);
     }

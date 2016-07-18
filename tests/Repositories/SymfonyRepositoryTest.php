@@ -1,16 +1,16 @@
 <?php
 
 use \Mockery as m;
-use Crafter\Installer\Repositories\LaravelRepository;
+use Crafter\Installer\Repositories\SymfonyRepository;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
+class SymfonyRepositoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * The Repository.
      *
-     * @var LaravelRepository
+     * @var SymfonyRepository
      */
     protected $repo;
 
@@ -21,7 +21,7 @@ class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->repo = m::mock(LaravelRepository::class.'[runCommands]', [
+        $this->repo = m::mock(SymfonyRepository::class.'[runCommands]', [
             m::mock(InputInterface::class),
             m::mock(OutputInterface::class),
             'FooProject',
@@ -48,7 +48,7 @@ class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project --prefer-dist laravel/laravel '.getcwd().DIRECTORY_SEPARATOR.'FooProject',
+            'composer create-project symfony/framework-standard-edition '.getcwd().DIRECTORY_SEPARATOR.'FooProject',
             $this->repo->getCommandsToRun()
         );
     }
