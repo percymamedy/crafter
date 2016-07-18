@@ -21,11 +21,11 @@ class ZendRepositoryTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->repo = m::mock(ZendRepository::class.'[runCommands]', [
+        $this->repo = m::mock(ZendRepository::class . '[runCommands]', [
             m::mock(InputInterface::class),
             m::mock(OutputInterface::class),
             'FooProject',
-            'latest'
+            'latest',
         ]);
     }
 
@@ -48,7 +48,7 @@ class ZendRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project -n -sdev zendframework/skeleton-application '.getcwd().DIRECTORY_SEPARATOR.'FooProject 3.0.*',
+            'composer create-project -n -sdev zendframework/skeleton-application ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject 3.0.*',
             $this->repo->getCommandsToRun()
         );
     }

@@ -21,11 +21,11 @@ class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->repo = m::mock(LaravelRepository::class.'[runCommands]', [
+        $this->repo = m::mock(LaravelRepository::class . '[runCommands]', [
             m::mock(InputInterface::class),
             m::mock(OutputInterface::class),
             'FooProject',
-            'latest'
+            'latest',
         ]);
     }
 
@@ -48,7 +48,7 @@ class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project --prefer-dist laravel/laravel '.getcwd().DIRECTORY_SEPARATOR.'FooProject',
+            'composer create-project --prefer-dist laravel/laravel ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
             $this->repo->getCommandsToRun()
         );
     }

@@ -21,11 +21,11 @@ class SymfonyRepositoryTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->repo = m::mock(SymfonyRepository::class.'[runCommands]', [
+        $this->repo = m::mock(SymfonyRepository::class . '[runCommands]', [
             m::mock(InputInterface::class),
             m::mock(OutputInterface::class),
             'FooProject',
-            'latest'
+            'latest',
         ]);
     }
 
@@ -48,7 +48,7 @@ class SymfonyRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project symfony/framework-standard-edition '.getcwd().DIRECTORY_SEPARATOR.'FooProject',
+            'composer create-project symfony/framework-standard-edition ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
             $this->repo->getCommandsToRun()
         );
     }
