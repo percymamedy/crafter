@@ -2,6 +2,8 @@
 
 namespace Crafter\Installer\Repositories;
 
+use Symfony\Component\Yaml\Yaml;
+
 class ZendRepository extends RepositoryFactory
 {
     /**
@@ -36,6 +38,9 @@ class ZendRepository extends RepositoryFactory
      */
     public function getVersion()
     {
-        return $this->version == 'latest' ? '3.0.*' : $this->version;
+        // Get Latest version from file
+        $latestVersion = collect(Yaml::parse(file_get_contents(__DIR__ . '/../config/latest-versions.yml')))->get('zend');
+
+        return $this->version == 'latest' ? $latestVersion : $this->version;
     }
 }

@@ -48,7 +48,7 @@ class ZendRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project -n -sdev zendframework/skeleton-application '.getcwd().DIRECTORY_SEPARATOR.'FooProject',
+            'composer create-project -n -sdev zendframework/skeleton-application '.getcwd().DIRECTORY_SEPARATOR.'FooProject 3.0.*',
             $this->repo->getCommandsToRun()
         );
     }
