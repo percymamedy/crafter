@@ -2,7 +2,6 @@
 
 namespace Crafter\Installer\Commands;
 
-use Crafter\Installer\Repositories;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -56,7 +55,7 @@ class NewCommand extends Command
     public function alertSuccessInstall()
     {
         $this->getOutputInterface()
-             ->writeln('<comment>Your "' . $this->getFramework() . '" application is installed and ready to go !!</comment>');
+             ->writeln('<comment>Your "'.$this->getFramework().'" application is installed and ready to go !!</comment>');
     }
 
     /**
@@ -134,7 +133,7 @@ class NewCommand extends Command
      */
     public function getFrameworksRepo()
     {
-        return collect(Yaml::parse(file_get_contents(__DIR__ . '/../config/frameworks.yml')))->get('list');
+        return collect(Yaml::parse(file_get_contents(__DIR__.'/../config/frameworks.yml')))->get('list');
     }
 
     /**
@@ -176,7 +175,7 @@ class NewCommand extends Command
     public function getRepo()
     {
         // Get Available repos
-        $repos = collect(Yaml::parse(file_get_contents(__DIR__ . '/../config/frameworks.yml')))->get('repos');
+        $repos = collect(Yaml::parse(file_get_contents(__DIR__.'/../config/frameworks.yml')))->get('repos');
 
         return collect($repos)->get($this->getFramework());
     }
@@ -198,7 +197,7 @@ class NewCommand extends Command
      */
     public function hasFramework()
     {
-        return ! is_null($this->getFramework());
+        return !is_null($this->getFramework());
     }
 
     /**
@@ -212,7 +211,7 @@ class NewCommand extends Command
         $this->input = $input;
         $this->output = $output;
 
-        $this->framework = ! is_null($input->getArgument('framework')) ? $this->validateFramework($input->getArgument('framework')) : null;
+        $this->framework = !is_null($input->getArgument('framework')) ? $this->validateFramework($input->getArgument('framework')) : null;
         $this->name = $input->getArgument('name');
         $this->version = $input->getArgument('version');
     }
@@ -227,7 +226,7 @@ class NewCommand extends Command
     {
         // Determine whether the user has specified a
         // framework to install with, if not as him.
-        if (! $this->hasFramework()) {
+        if (!$this->hasFramework()) {
             $this->askForFramework();
         }
     }
@@ -245,8 +244,8 @@ class NewCommand extends Command
         $available = collect($this->getFrameworksRepo());
 
         // Determine whether this framework is valid.
-        if (! $available->contains($framework)) {
-            throw new RuntimeException('Framework "' . $framework . '" is not available for installation !');
+        if (!$available->contains($framework)) {
+            throw new RuntimeException('Framework "'.$framework.'" is not available for installation !');
         }
 
         // Return it.

@@ -16,7 +16,7 @@ class LaravelRepository extends RepositoryFactory
 
         // Commands
         $commands = [
-            rtrim($composer . ' create-project --prefer-dist laravel/laravel ' . $this->getProjectPath() . ' ' . $this->getVersion(), ' '),
+            rtrim($composer.' create-project --prefer-dist laravel/laravel '.$this->getProjectPath().' '.$this->getVersion(), ' '),
         ];
 
         return implode(' && ', $commands);
