@@ -2,7 +2,6 @@
 
 namespace Crafter\Installer\Commands;
 
-use Crafter\Installer\Repositories;
 use RuntimeException;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

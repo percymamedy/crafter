@@ -108,7 +108,7 @@ abstract class RepositoryFactory
      */
     public function getProjectPath()
     {
-        return getcwd().DIRECTORY_SEPARATOR.$this->getProjectName();
+        return getcwd() . DIRECTORY_SEPARATOR . $this->getProjectName();
     }
 
     /**
