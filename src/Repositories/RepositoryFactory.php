@@ -64,8 +64,8 @@ abstract class RepositoryFactory
      */
     public function findComposer()
     {
-        if (file_exists(getcwd() . '/composer.phar')) {
-            return '"' . PHP_BINARY . '" composer.phar';
+        if (file_exists(getcwd().'/composer.phar')) {
+            return '"'.PHP_BINARY.'" composer.phar';
         }
 
         return 'composer';
@@ -153,9 +153,9 @@ abstract class RepositoryFactory
     /**
      * Verify that the application does not already exist.
      *
-     * @return void
-     *
      * @throws RuntimeException
+     *
+     * @return void
      */
     public function verifyApplicationDoesntExist()
     {

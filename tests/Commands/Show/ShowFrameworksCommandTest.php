@@ -29,8 +29,8 @@ class ShowFrameworksCommandTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->app = new Application;
-        $this->command = new ShowFrameworksCommand;
+        $this->app = new Application();
+        $this->command = new ShowFrameworksCommand();
 
         $this->app->add($this->command);
     }

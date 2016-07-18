@@ -29,8 +29,8 @@ class NewCommandTest extends PHPUnit_Framework_TestCase
     {
         parent::setUp();
 
-        $this->app = new Application;
-        $this->command = new NewCommand;
+        $this->app = new Application();
+        $this->command = new NewCommand();
 
         $this->app->add($this->command);
     }
@@ -48,7 +48,7 @@ class NewCommandTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test the validateFramework method
+     * Test the validateFramework method.
      *
      * @return void
      *
@@ -61,7 +61,7 @@ class NewCommandTest extends PHPUnit_Framework_TestCase
         $commandTester->execute([
             'command'   => $command->getName(),
             'framework' => 'FooFramework',
-            'name'      => 'BarApplication'
+            'name'      => 'BarApplication',
         ]);
     }
 }

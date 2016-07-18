@@ -43,7 +43,7 @@ class ShowFrameworksCommand extends Command
     public function formatOutput($list)
     {
         return collect($list)->transform(function ($item) {
-            return '<info>' . $item . '</info>';
+            return '<info>'.$item.'</info>';
         })->all();
     }
 
@@ -54,6 +54,6 @@ class ShowFrameworksCommand extends Command
      */
     public function getFrameworkList()
     {
-        return collect(Yaml::parse(file_get_contents(__DIR__ . '/../../config/frameworks.yml')))->get('list');
+        return collect(Yaml::parse(file_get_contents(__DIR__.'/../../config/frameworks.yml')))->get('list');
     }
 }
