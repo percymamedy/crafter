@@ -5,6 +5,7 @@ namespace Crafter\Installer\Repositories;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Process\InputStream;
 use Symfony\Component\Process\Process;
 
 abstract class RepositoryFactory
@@ -151,11 +152,24 @@ abstract class RepositoryFactory
         // Show start message.
         $this->showStartMessage();
 
+        // Create Project directory
+        $this->createProjectDirectory();
+
         // Get all commands that we should run
         $commands = $this->getCommandsToRun();
 
         // Actually runs the commands
         $this->runCommands($commands);
+    }
+
+    /**
+     * Create the Project Directory
+     *
+     * @return void
+     */
+    public function createProjectDirectory()
+    {
+        mkdir($this->getProjectPath());
     }
 
     /**
@@ -168,7 +182,7 @@ abstract class RepositoryFactory
     public function runCommands($commands)
     {
         // Create process
-        $process = new Process($commands, $this->getCurrentWorkingDirectory(), null, null, null);
+        $process = new Process($commands, $this->getProjectPath(), null, null, null);
 
         if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
             $process->setTty(true);

@@ -10,9 +10,11 @@ if (file_exists(__DIR__.'/../../autoload.php')) {
 
 use Crafter\Installer\Commands\NewCommand;
 use Crafter\Installer\Commands\Show\ShowFrameworksCommand;
+use Crafter\Installer\Commands\UpdateCommand;
 use Symfony\Component\Console\Application;
 
 $app = new Application('Crafter installer', '0.1.0');
 $app->add(new NewCommand);
 $app->add(new ShowFrameworksCommand);
+$app->add(new UpdateCommand);
 $app->run();

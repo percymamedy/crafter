@@ -1,7 +1,7 @@
 <?php
 
-use \Mockery as m;
 use Crafter\Installer\Repositories\SymfonyRepository;
+use Mockery as m;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -21,12 +21,15 @@ class SymfonyRepositoryTest extends PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->repo = m::mock(SymfonyRepository::class . '[runCommands]', [
+        $this->repo = m::mock(SymfonyRepository::class . '[runCommands,hasSymfonyInstaller,symfonyInstallerPath,findSymfony]', [
             m::mock(InputInterface::class),
             m::mock(OutputInterface::class),
             'FooProject',
             'latest',
         ]);
+        $this->repo->shouldReceive('hasSymfonyInstaller')->andReturn(true);
+        $this->repo->shouldReceive('symfonyInstallerPath')->andReturn('symfony.phar');
+        $this->repo->shouldReceive('findSymfony')->andReturn(PHP_BINARY . ' symfony.phar');
     }
 
     /**
@@ -48,7 +51,7 @@ class SymfonyRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project symfony/framework-standard-edition ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
+            PHP_BINARY . ' symfony.phar new ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
             $this->repo->getCommandsToRun()
         );
     }

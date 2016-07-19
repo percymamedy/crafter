@@ -1,3 +1,4 @@
 laravel: 5.2.*
 symfony: 3.1.*
 zend: 3.0.*
+cakephp: 3.2.*
