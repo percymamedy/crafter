@@ -5,7 +5,6 @@ namespace Crafter\Installer\Repositories;
 use RuntimeException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\InputStream;
 use Symfony\Component\Process\Process;
 
 abstract class RepositoryFactory
@@ -163,7 +162,7 @@ abstract class RepositoryFactory
     }
 
     /**
-     * Create the Project Directory
+     * Create the Project Directory.
      *
      * @return void
      */
