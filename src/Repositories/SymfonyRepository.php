@@ -20,7 +20,7 @@ class SymfonyRepository extends RepositoryFactory
      */
     public function downloadSymfonyInstaller()
     {
-        $response = $this->getClient()->request('GET', 'https://symfony.com/installer');
+        $response = $this->getClient()->get('https://symfony.com/installer');
         file_put_contents($this->symfonyInstallerPath(), $response->getBody());
     }
 
