@@ -1,7 +1,7 @@
 <?php
 
-use \Mockery as m;
 use Crafter\Installer\Repositories\LaravelRepository;
+use Mockery as m;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -48,8 +48,13 @@ class LaravelRepositoryTest extends PHPUnit_Framework_TestCase
     public function testGetCommandsToRunMethod()
     {
         $this->assertEquals(
-            'composer create-project --prefer-dist laravel/laravel ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
-            $this->repo->getCommandsToRun()
+            [
+                'composer create-project --prefer-dist --no-scripts laravel/laravel ' . getcwd() . DIRECTORY_SEPARATOR . 'FooProject',
+                'composer run-script post-root-package-install',
+                'composer run-script post-install-cmd',
+                'composer run-script post-create-project-cmd',
+            ],
+            explode(' && ', $this->repo->getCommandsToRun())
         );
     }
 }

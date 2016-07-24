@@ -23,7 +23,10 @@ class LaravelRepository extends RepositoryFactory
 
         // Commands
         $commands = [
-            rtrim($composer . ' create-project --prefer-dist laravel/laravel ' . $this->getProjectPath() . ' ' . $this->getVersion(), ' '),
+            rtrim($composer . ' create-project --prefer-dist --no-scripts laravel/laravel ' . $this->getProjectPath() . ' ' . $this->getVersion(), ' '),
+            $composer . ' run-script post-root-package-install',
+            $composer . ' run-script post-install-cmd',
+            $composer . ' run-script post-create-project-cmd',
         ];
 
         return implode(' && ', $commands);
