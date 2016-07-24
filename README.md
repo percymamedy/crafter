@@ -9,6 +9,8 @@
 [![License](https://poser.pugx.org/crafter/installer/license)](https://packagist.org/packages/crafter/installer)
 [![composer.lock](https://poser.pugx.org/crafter/installer/composerlock)](https://packagist.org/packages/crafter/installer)
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/c8be1988-0980-4881-a6ba-e87b13d8b85e/big.png)](https://insight.sensiolabs.com/projects/c8be1988-0980-4881-a6ba-e87b13d8b85e)
+
 Install your favourite PHP frameworks using only one installer. 
 
 ## How it works
