@@ -12,7 +12,7 @@ class ZendRepository extends RepositoryFactory
      * @var string
      */
     protected $startMessage = 'Crafting your Zend Framework application...';
-    
+
     /**
      * Commands that must be run to install Symfony.
      *
@@ -22,7 +22,7 @@ class ZendRepository extends RepositoryFactory
     {
         // Get Composer
         $composer = $this->findComposer();
-        
+
         // Commands
         $commands = [
             rtrim($composer .
@@ -31,10 +31,10 @@ class ZendRepository extends RepositoryFactory
                   ' ' .
                   $this->getVersion(), ' '),
         ];
-        
+
         return implode(' && ', $commands);
     }
-    
+
     /**
      * Get the version of the framework to use.
      *
@@ -48,7 +48,7 @@ class ZendRepository extends RepositoryFactory
                 file_get_contents(__DIR__ . '/../config/latest-versions.yml')
             )
         )->get('zend');
-        
+
         return $this->version == 'latest' ? $latestVersion : $this->version;
     }
 }

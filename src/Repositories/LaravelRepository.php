@@ -10,7 +10,7 @@ class LaravelRepository extends RepositoryFactory
      * @var string
      */
     protected $startMessage = 'Crafting your Laravel application...';
-    
+
     /**
      * Commands that must be run to install Laravel.
      *
@@ -20,7 +20,7 @@ class LaravelRepository extends RepositoryFactory
     {
         // Get Composer
         $composer = $this->findComposer();
-        
+
         // Commands
         $commands = [
             rtrim($composer .
@@ -32,7 +32,7 @@ class LaravelRepository extends RepositoryFactory
             $composer . ' run-script post-install-cmd',
             $composer . ' run-script post-create-project-cmd',
         ];
-        
+
         return implode(' && ', $commands);
     }
 }
