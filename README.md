@@ -39,6 +39,7 @@ craft new <framework> <name> [<version>]
 For the moment Crafter supports only:
 
 * Laravel
+* Orchestra Platform
 * Symfony
 * Zend Framework
 

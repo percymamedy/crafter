@@ -2,17 +2,17 @@
 
 namespace Crafter\Installer\Repositories;
 
-class LaravelRepository extends RepositoryFactory
+class OrchestraRepository extends RepositoryFactory
 {
     /**
      * Installation start message.
      *
      * @var string
      */
-    protected $startMessage = 'Crafting your Laravel application...';
+    protected $startMessage = 'Crafting your Orchestra platform application...';
     
     /**
-     * Commands that must be run to install Laravel.
+     * Commands that must be run to install Orchestra platform.
      *
      * @return string
      */
@@ -24,7 +24,7 @@ class LaravelRepository extends RepositoryFactory
         // Commands
         $commands = [
             rtrim($composer .
-                  ' create-project --prefer-dist --no-scripts laravel/laravel ' .
+                  ' create-project --prefer-dist --no-scripts orchestra/platform ' .
                   $this->getProjectPath() .
                   ' ' .
                   $this->getVersion(), ' '),
