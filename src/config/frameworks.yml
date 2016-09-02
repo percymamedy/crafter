@@ -1,8 +1,10 @@
 list:
  - laravel
+ - orchestra
  - symfony
  - zend
 repos:
     laravel: \Crafter\Installer\Repositories\LaravelRepository
+    orchestra: \Crafter\Installer\Repositories\OrchestraRepository
     symfony: \Crafter\Installer\Repositories\SymfonyRepository
     zend: \Crafter\Installer\Repositories\ZendRepository

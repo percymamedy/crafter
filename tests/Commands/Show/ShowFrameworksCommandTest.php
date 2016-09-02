@@ -59,5 +59,7 @@ class ShowFrameworksCommandTest extends PHPUnit_Framework_TestCase
 
         $this->assertRegExp('/laravel/', $commandTester->getDisplay());
         $this->assertRegExp('/symfony/', $commandTester->getDisplay());
+        $this->assertRegExp('/orchestra/', $commandTester->getDisplay());
+        $this->assertRegExp('/zend/', $commandTester->getDisplay());
     }
 }

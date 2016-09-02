@@ -25,7 +25,11 @@ class ZendRepository extends RepositoryFactory
 
         // Commands
         $commands = [
-            rtrim($composer . ' create-project -n -sdev zendframework/skeleton-application ' . $this->getProjectPath() . ' ' . $this->getVersion(), ' '),
+            rtrim($composer .
+                  ' create-project -n -sdev zendframework/skeleton-application ' .
+                  $this->getProjectPath() .
+                  ' ' .
+                  $this->getVersion(), ' '),
         ];
 
         return implode(' && ', $commands);
@@ -39,7 +43,11 @@ class ZendRepository extends RepositoryFactory
     public function getVersion()
     {
         // Get Latest version from file
-        $latestVersion = collect(Yaml::parse(file_get_contents(__DIR__ . '/../config/latest-versions.yml')))->get('zend');
+        $latestVersion = collect(
+            Yaml::parse(
+                file_get_contents(__DIR__ . '/../config/latest-versions.yml')
+            )
+        )->get('zend');
 
         return $this->version == 'latest' ? $latestVersion : $this->version;
     }
