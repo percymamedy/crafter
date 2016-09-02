@@ -12,7 +12,7 @@ class SymfonyRepository extends RepositoryFactory
      * @var string
      */
     protected $startMessage = 'Crafting your Symfony application...';
-    
+
     /**
      * Commands that must be run to install Symfony.
      *
@@ -22,15 +22,15 @@ class SymfonyRepository extends RepositoryFactory
     {
         // Get symfony
         $symfony = $this->findSymfony();
-        
+
         // Commands
         $commands = [
             rtrim($symfony . ' new ' . $this->getProjectPath() . ' ' . $this->getVersion()),
         ];
-        
+
         return implode(' && ', $commands);
     }
-    
+
     /**
      * Find the symfony installer.
      *
@@ -42,11 +42,11 @@ class SymfonyRepository extends RepositoryFactory
         if (! $this->hasSymfonyInstaller()) {
             $this->downloadSymfonyInstaller();
         }
-        
+
         // Return Installer path
         return PHP_BINARY . ' ' . realpath($this->symfonyInstallerPath());
     }
-    
+
     /**
      * Checks if symfony installer exists.
      *
@@ -56,7 +56,7 @@ class SymfonyRepository extends RepositoryFactory
     {
         return file_exists($this->symfonyInstallerPath());
     }
-    
+
     /**
      * Return the symfony.phar path.
      *
@@ -66,7 +66,7 @@ class SymfonyRepository extends RepositoryFactory
     {
         return __DIR__ . '/../../symfony.phar';
     }
-    
+
     /**
      * Download symfony installer.
      *
@@ -77,7 +77,7 @@ class SymfonyRepository extends RepositoryFactory
         $response = $this->getClient()->get('https://symfony.com/installer');
         file_put_contents($this->symfonyInstallerPath(), $response->getBody());
     }
-    
+
     /**
      * The GuzzleClient.
      *
