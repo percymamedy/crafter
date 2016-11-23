@@ -1,38 +1,38 @@
 {
-    "name": "crafter/installer",
-    "description": "Install your favourite PHP frameworks using only one installer.",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Percy Mamedy",
-            "email": "percymamedy@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.6.0",
-        "illuminate/filesystem": "5.2.*",
-        "illuminate/support": "5.2.*",
-        "symfony/console": "~2.3|~3.1",
-        "symfony/process": "~2.3|~3.1",
-        "symfony/yaml": "~2.3|~3.1",
-        "guzzlehttp/guzzle": "~4.0|~5.0|~6.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "5.4.*",
-        "mockery/mockery": "0.9.*",
-        "symfony/var-dumper": "~2.3|~3.1"
-    },
-    "autoload": {
-        "psr-4": {
-            "Crafter\\Installer\\": "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
-        }
-    },
-    "bin": [
-        "craft"
-    ]
+	"name": "crafter/installer",
+	"description": "Install your favourite PHP frameworks using only one installer.",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Percy Mamedy",
+			"email": "percymamedy@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.6.0",
+		"illuminate/filesystem": "5.2.*",
+		"illuminate/support": "5.2.*",
+		"symfony/console": "~2.3|~3.1",
+		"symfony/process": "~2.3|~3.1",
+		"symfony/yaml": "~2.3|~3.1",
+		"guzzlehttp/guzzle": "~4.0|~5.0|~6.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "5.4.*",
+		"mockery/mockery": "0.9.*",
+		"symfony/var-dumper": "~2.3|~3.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Crafter\\Installer\\": "src/"
+		}
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "0.1.x-dev"
+		}
+	},
+	"bin": [
+		"craft"
+	]
 }
